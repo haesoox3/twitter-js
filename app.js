@@ -11,14 +11,16 @@ app.use(function(request, response, next){
 	next();
 });
 
-app.get('/', function(request, response, next){
+app.get("/", function(request, response, next){
+	console.log("status code: " + response.statusCode);
 	response.send("Welcome!");
 	next();
 });
 
 // 	Leave next [even in the last function] for error handling 
-app.get('/get-somethingelse', function(request, response, next){
-	response.send("GET " + request.originalUrl);
+app.get('/special', function(request, response, next){
+	console.log("GET " + request.originalUrl);
+	response.send("you've reached the special area");
 	next();
 });
 
