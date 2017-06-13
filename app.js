@@ -6,8 +6,9 @@ app.listen(3000, function(){
 });
 
 // Put middleware in the beginning to deal with different requests
+// Customary to use console.log because middleware doesn't want to interfere with request/response
 app.use(function(request, response, next){
-	response.send("USE " + request.originalUrl);
+	console.log("USE " + request.originalUrl);
 	next();
 });
 
