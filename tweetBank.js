@@ -4,7 +4,7 @@ const data = [];
 module.exports = { add: add, list: list, find: find };
 
 function add (name, content) {
-  data.push({ name: name, content: content });
+  data.push({ name: name, content: content , uID: uniqueID(content)});
 }
 
 function list () {
@@ -14,6 +14,10 @@ function list () {
 // Find returns array
 function find (properties) {
   return _.cloneDeep(_.filter(data, properties));
+}
+
+function uniqueID(tweet){
+  return Math.floor(Math.random()*100);
 }
 
 const randArrayEl = function(arr) {
