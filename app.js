@@ -1,11 +1,19 @@
 const routes = require('./routes');
 
 
-const express = require( 'express' );
-const nunjucks = require( 'nunjucks');
+const express = require('express' );
+const nunjucks = require('nunjucks');
+
+const bodyParser = require('body-parser');
 const app = express();
 
 app.use('/', routes);
+
+app.use(bodyParser.urlencoded({ extended: false}))
+
+// app.use(bodyParser.raw ({ extended: false}))
+
+// app.use(bodyParser.json())
 
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
@@ -24,13 +32,13 @@ app.use(function(request, response, next){
 	next();
 });
 
-// Don't put in next at the end of every app function 
+// Don't put in next at the end of every app function
 app.get('/stylesheets/style.css', function(request, response, next){
 	console.log('test');
 
 	// absolute path
-	//response.sendFile('/Users/karinayang/Desktop/graceHopper/workshops/twitter-js/public/stylesheets/style.css');
-	response.sendFile('/Users/Monica/GHP/twitter-js/public/stylesheets/style.css'); 
+	response.sendFile('/Users/karinayang/Desktop/graceHopper/workshops/twitter-js/public/stylesheets/style.css');
+	// response.sendFile('/Users/Monica/GHP/twitter-js/public/stylesheets/style.css');
 });
 
 
