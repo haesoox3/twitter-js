@@ -38,6 +38,6 @@ for (let i = 0; i < 10; i++) {
 
 // Using find function
 
-// add("Karina", "hi"); 
+// add("Karina", "hi");
 // add("Karina", "hello");
 // console.log("find", find({content: "hi"}));
