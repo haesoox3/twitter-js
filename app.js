@@ -2,6 +2,7 @@ const express = require( 'express' );
 const nunjucks = require( 'nunjucks');
 const app = express();
 
+const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
 var locals = {
     title: 'An Example',
     people: [
@@ -11,18 +12,9 @@ var locals = {
     ]
 };
 
-
-// nunjucks.configure('views', {noCache: true});
-// nunjucks.render('index.html', locals, function (err, output){
-// 	console.log(output);
-// });
-
-
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
 nunjucks.configure('views', {noCache: true}); // point nunjucks to the proper directory for templates;
-// Turn off Nunjuck's caching in app.js by turning on the noCache option in nunjucks.configure, like so: nunjucks.configure('views', { noCache: true }).
-
 
 app.listen(3000, function(){
 	console.log("server listening");
@@ -37,7 +29,7 @@ app.use(function(request, response, next){
 
 app.get("/", function(request, response, next){
 	console.log("status code: " + response.statusCode);
-	response.send("Welcome!");
+	response.render('index', {title: 'Hall of Fame', people: people});
 	next();
 });
 
