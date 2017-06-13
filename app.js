@@ -7,18 +7,6 @@ const app = express();
 
 app.use('/', routes);
 
-
-
-// const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-// var locals = {
-//     title: 'An Example',
-//     people: [
-//         { name: 'Gandalf'},
-//         { name: 'Frodo' },
-//         { name: 'Hermione'}
-//     ]
-// };
-
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
 nunjucks.configure('views', {noCache: true}); // point nunjucks to the proper directory for templates;
@@ -36,14 +24,14 @@ app.use(function(request, response, next){
 	next();
 });
 
+// Don't put in next at the end of every app function 
 app.get('/stylesheets/style.css', function(request, response, next){
 	console.log('test');
 
 	// absolute path
-	response.sendFile('/Users/karinayang/Desktop/graceHopper/workshops/twitter-js/public/stylesheets/style.css');
+	//response.sendFile('/Users/karinayang/Desktop/graceHopper/workshops/twitter-js/public/stylesheets/style.css');
+	response.sendFile('/Users/Monica/GHP/twitter-js/public/stylesheets/style.css'); 
 });
-
-
 
 
 // app.get("/", function(request, response, next){

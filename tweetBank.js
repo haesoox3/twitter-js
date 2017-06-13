@@ -11,6 +11,7 @@ function list () {
   return _.cloneDeep(data);
 }
 
+// Find returns array
 function find (properties) {
   return _.cloneDeep(_.filter(data, properties));
 }
@@ -38,6 +39,6 @@ for (let i = 0; i < 10; i++) {
 
 // Using find function
 
-// add("Karina", "hi");
-// add("Karina", "hello");
+add("Karina", "hi");
+add("Nimit Stackson", "hello");
 // console.log("find", find({content: "hi"}));
